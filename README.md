@@ -180,32 +180,32 @@ s - split the hunk
 - `$git rebase --skip`
 
 #### Rebase rewriting history
-- Reorder
+##### - Reorder
 - `$git checkout wValidator`
 - `$git log --decorate --graph --oneline -all`
-(Find the common parent, in this case 69670e7)
+- (Find the common parent, in this case 69670e7)
 - `$git rebase -i 69670e7` (rebase to common parent)
-(Reorder the commits by cutting and pasting the lines (use dd and p in vim))
-press :wq
+- (Reorder the commits by cutting and pasting the lines (use dd and p in vim))
+- press :wq
 - `$git log --decorate --graph --oneline`
 
-- Squash
+##### - Squash
 - `$git checkout wValidator`
 - `$git log --decorate --graph --oneline -all`
 - `$git rebase -i 69670e7` 
-(replace the all pick you want to squash to squash)
-press :wq
-(Delete the default message and create custom message)
-press :wq
+- (replace the all pick you want to squash to squash)
+- press :wq
+- (Delete the default message and create custom message)
+- press :wq
 
-- Rename Commit
+##### - Rename Commit
 - `$git checkout wValidator`
 - `$git log --decorate --graph --oneline -all`
 - `$git rebase -i 69670e7` 
-(replace the all pick you want to change to reword)
-press :wq
-(Change the commit message)
-press :wq
+- (replace the all pick you want to change to reword)
+- press :wq
+- (Change the commit message)
+- press :wq
 
 #### Rebase Master and Fast Forward Merge
 - `$git checkout wValidator`
@@ -215,6 +215,6 @@ press :wq
 - `$git merge wValidator` (Fast Forward Merge)
 
 #### Add file to .gitignore that are already tracked
-(Edit .gitignore and commit)
+- (Edit .gitignore and commit)
 - `$git rm --cached HIDDEN` (Remove the cached)
 - `$git commit -m "Message"`
