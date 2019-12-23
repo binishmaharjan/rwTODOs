@@ -136,3 +136,85 @@ s - split the hunk
 - `$git merge iwantmyrealname`
 - `$git log --oneline --all --decorate --graph`
 - `$git push`
+
+#### Merge Conflit with terminal
+- `$git checkout zIntegration`
+- `$git config merge.conflictstyle diff3` (show the unchanged code from the common ancestor)
+- `$git merge yUI`
+(Edit the Conflict part)
+- `$git status`
+- `$git add .`
+- `$git commit`
+- `$git branch -d yUI`
+
+#### Merge Conflict using mergeTool
+- `$git config mergetool opendiff` (Configuration for the mergetool)
+- `$git merge xReadMeUpdates`
+- `$git mergetool`
+(Command+S & Commang+Q)
+- `$rm README.md.orig` (An extra file with the original conflict will be created, so delete it)
+- `$git branch -d xReadMeUpdates`
+#### Stash
+- `$git stash` (stash current changes with default message)
+- `$git stash list` (show stash list)
+- `$git stash apply (apply the latest stash)
+- `$git stash show -p` (show latest stash with diff)
+- `$git stash show stash@{1}` (show second stash )
+- `$git stash pop` (apply latest stash and delete it)
+- `$git stash push -m "Stash Message"` (stash with custom message)
+- `$git stash drop stash@{1}` (delete stash at particular index)
+
+#### Alias
+- `$git config alias.gl 'log --oneline --graph --decorate --all'` (Local Alias)
+- `$git config --global alias.gl 'log --oneline --graph --decorate --all'` (Global Alias)
+- `$cat ~/.gitconfig` (Show the content of the global alias)
+
+#### Rebase 
+- `$git checkout wValidator` (Current working branch)
+- `$git rebase xValidator` (Add the codes from xValidator to current working branch)
+(If merge conflits occurs)
+- `$git mergetool`
+(Resolve Conflict)
+- `$git status`
+- `$rm -rf js/magic_square/validator.js.orig`
+- `$git rebase --skip`
+
+#### Rebase rewriting history
+- Reorder
+- `$git checkout wValidator`
+- `$git log --decorate --graph --oneline -all`
+(Find the common parent, in this case 69670e7)
+- `$git rebase -i 69670e7` (rebase to common parent)
+(Reorder the commits by cutting and pasting the lines (use dd and p in vim))
+press :wq
+- `$git log --decorate --graph --oneline`
+
+- Squash
+- `$git checkout wValidator`
+- `$git log --decorate --graph --oneline -all`
+- `$git rebase -i 69670e7` 
+(replace the all pick you want to squash to squash)
+press :wq
+(Delete the default message and create custom message)
+press :wq
+
+- Rename Commit
+- `$git checkout wValidator`
+- `$git log --decorate --graph --oneline -all`
+- `$git rebase -i 69670e7` 
+(replace the all pick you want to change to reword)
+press :wq
+(Change the commit message)
+press :wq
+
+#### Rebase Master and Fast Forward Merge
+- `$git checkout wValidator`
+- `$git rebase master`
+- `$git log --decorate --graph --oneline -all`
+- `$git checkout master`
+- `$git merge wValidator` (Fast Forward Merge)
+
+#### Add file to .gitignore that are already tracked
+(Edit .gitignore and commit)
+- `$git rm --cached HIDDEN` (Remove the cached)
+- `$git commit -m "Message"`
