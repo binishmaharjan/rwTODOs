@@ -148,7 +148,7 @@ s - split the hunk
 - `$git branch -d yUI`
 
 #### Merge Conflict using mergeTool
-- `$git config mergetool opendiff` (Configuration for the mergetool)
+- `$git config mergetool.opendiff` (Configuration for the mergetool)
 - `$git merge xReadMeUpdates`
 - `$git mergetool`
 (Command+S & Commang+Q)
